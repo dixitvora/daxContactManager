@@ -5,11 +5,14 @@ import Header from './Components/Header';
 import 'mdbootstrap/css/mdb.lite.min.css';
 import 'mdbootstrap/css/bootstrap.min.css';
 
+import {Provider} from './Contex';
+
 import './App.css';
 
 class App extends Component {
   render() {
     return (
+      <Provider>
       <div className="App">
         <Header branding="Contact Manager"/>
         <div className="container">
@@ -18,6 +21,7 @@ class App extends Component {
         </div>
         
       </div>
+      </Provider>
     );
   }
 }
