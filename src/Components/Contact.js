@@ -1,26 +1,33 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
+import {Consumer} from '../Contex';
 
 
 class Contact extends Component {
     state={
       showContactInfo:false
     };
-    onDeleteClick = ()=>{
+    onDeleteClick = (id,dispatch)=>{
       // console.log('object');
-      this.props.deleteClickHandler();
+      // this.props.deleteClickHandler();
+      dispatch({type:'DELETE_CONTACT', payload:id});
     }
   render() {
-    const {name,email,phone} = this.props.contact;
+    const {id,name,email,phone} = this.props.contact;
     const {showContactInfo} = this.state;
+
     return (
-      <div className="card card-body mb-3 container">
+      <Consumer>
+        {value=> {
+          const {dispatch} =value;
+          return(
+            <div className="card card-body mb-3 container">
         <h2 className="card-header card-title mr-2"> {name } 
         <i className="fa fa-sort-down "  style={{cursor:'pointer'}} onClick={() => {this.setState({
-        showContactInfo: !this.state.showContactInfo
-        });
-      }} ></i>
-      <i className="fa fa-times" style={{cursor:'pointer',float:'right',color:'red'}} onClick={this.onDeleteClick}></i></h2>
+        showContactInfo: !this.state.showContactInfo});
+          }
+        } ></i>
+      <i className="fa fa-times" style={{cursor:'pointer',float:'right',color:'red'}} onClick={this.onDeleteClick.bind(this,id,dispatch)}></i></h2>
       {showContactInfo ? ( 
         <ul className="  card-body list-group container ">
             <li className="list-group-item">Email: {email}</li>
@@ -29,12 +36,16 @@ class Contact extends Component {
       ) : null}
         
       </div>
+          )
+        }}
+      </Consumer>
+      
     )
   }
 }
 Contact.propTypes={
   contact:PropTypes.object.isRequired,
-  deleteClickHandler:PropTypes.func.isRequired,
+  // deleteClickHandler:PropTypes.func.isRequired,
 }
 
 export default Contact;
