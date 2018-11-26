@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {Consumer} from '../Contex';
+import {Consumer} from '../../Contex';
 
 
 class Contact extends Component {
