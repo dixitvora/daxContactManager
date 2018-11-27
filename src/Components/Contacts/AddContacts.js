@@ -13,7 +13,7 @@ class AddContacts extends Component {
     };
     onSubmit= (dispatch,e) =>{
         e.preventDefault();
-        console.log(this.state);
+        // console.log(this.state); this is for checking errors 
         const{name,email,phone} = this.state;
         if(name === ''){
             this.setState({errors:{name:'Name is required'}});
