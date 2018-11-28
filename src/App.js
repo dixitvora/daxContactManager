@@ -8,11 +8,10 @@ import 'mdbootstrap/css/bootstrap.min.css';
 import AddContacts from './Components/Contacts/AddContacts';
 import About from './Components/Pages/About';
 import NotFound from './Components/Pages/NotFound';
-
-
 import {Provider} from './Contex';
-
 import './App.css';
+import Test from './Components/Test/Test';
+import EditContacts from './Components/Contacts/EditContacts';
 
 class App extends Component {
   render() {
@@ -26,6 +25,8 @@ class App extends Component {
                  <Route exact path ='/' component={Contacts}/>
                  <Route exact path='/about' component={About}/>
                  <Route exact path='/addcontact' component={AddContacts}/>
+                 <Route exact path='/contact/edit/:id' component={EditContacts}/>
+                 <Route exact path='/test' component={Test}/>
                  <Route component={NotFound}/>
                 </Switch>
               </div>            
